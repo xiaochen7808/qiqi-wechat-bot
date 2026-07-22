@@ -1,0 +1,34 @@
+{
+    "topics": [
+        {
+            "id": "anime_romance",
+            "title": "日漫恋爱番",
+            "content": "聊最近刷到的恋爱日漫或甜甜剪辑，顺势问用户平时看不看日漫",
+            "enabled": true
+        },
+        {
+            "id": "milk_tea",
+            "title": "奶茶口味",
+            "content": "说自己有点想喝奶茶，问用户喜欢什么口味",
+            "enabled": true
+        },
+        {
+            "id": "music",
+            "title": "最近听歌",
+            "content": "分享最近听到一首歌容易循环，问用户最近有没有常听的歌",
+            "enabled": true
+        },
+        {
+            "id": "daily_school",
+            "title": "学校小事",
+            "content": "随口聊今天上课、宿舍或路上遇到的小事，再自然问用户今天忙不忙",
+            "enabled": true
+        },
+        {
+            "id": "weekend",
+            "title": "周末安排",
+            "content": "聊周末想休息、追剧或出去买点东西，问用户周末一般怎么过",
+            "enabled": true
+        }
+    ]
+}

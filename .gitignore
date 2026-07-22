@@ -1,0 +1,46 @@
+# Git/Codex and local tooling
+.git/
+.agents/
+.vscode/
+.idea/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*.pyd
+*.db
+*.sqlite*
+*.session
+*.cookie
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# Runtime logs and state that may contain user data
+*.log
+*.out
+*.err
+**/Memory_Temp/
+**/CoreMemory/
+**/forum_data/
+**/chat_contexts.json
+**/chat_active_topic_state.json
+**/user_info.json
+**/favorability.json
+**/character_story.txt
+**/adult_intimacy_state.json
+**/recurring_reminders.json
+
+# Local backups and screenshots
+**/*.zip
+/feishu_*.png
+/更换的文件/
+
+# OS files
+Thumbs.db
+.DS_Store

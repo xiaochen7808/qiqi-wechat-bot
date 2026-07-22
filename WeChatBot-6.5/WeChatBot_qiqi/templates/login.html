@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录 - {{ app_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-----------------------------------------------------------------------
+- Copyright (C) 2025, iwyxdxl
+- Licensed under GNU GPL-3.0 or higher, see the LICENSE file for details.
+-
+- This file is part of WeChatBot.
+- WeChatBot is free software: you can redistribute it and/or modify
+- it under the terms of the GNU General Public License as published by
+- the Free Software Foundation, either version 3 of the License, or
+- (at your option) any later version.
+-
+- WeChatBot is distributed in the hope that it will be useful,
+- but WITHOUT ANY WARRANTY; without even the implied warranty of
+- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- GNU General Public License for more details.
+-
+- You should have received a copy of the GNU General Public License
+- along with WeChatBot.  If not, see <http://www.gnu.org/licenses/>.
+------------------------------------------------------------------------>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f7f8fc;
+            {% if wallpaper_url %}
+            background-image: url("{{ wallpaper_url }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            {% endif %}
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1f2937;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(239, 243, 247, 0.58);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .header,
+        .login-container,
+        .legal-notice {
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            width: 100%;
+            max-width: 480px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #17382c;
+            font-size: 1.8em;
+            text-align: center;
+            margin: 0 0 10px 0;
+            line-height: 1.35;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.75);
+        }
+        .login-container {
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.72);
+            box-shadow: 0 10px 28px rgba(24,39,32,0.14);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .login-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        .error {
+            color: #f44336;
+            padding: 10px;
+            background: #ffe6e6;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        input[type="password"] {
+            width: 100%;
+            height: 46px;
+            padding: 0 13px;
+            margin-bottom: 15px;
+            border: 1px solid #b9c5bf;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: inherit;
+            background: rgba(255,255,255,0.96);
+        }
+        input[type="password"]:focus {
+            border-color: #267a5b;
+            box-shadow: 0 0 0 3px rgba(38,122,91,0.18);
+            outline: none;
+        }
+        .btn {
+            background-color: #267a5b;
+            color: white;
+            min-height: 46px;
+            padding: 0 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: inherit;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #1f684d;
+        }
+        .btn:focus-visible,
+        .legal-notice a:focus-visible {
+            outline: 3px solid rgba(38,122,91,0.32);
+            outline-offset: 2px;
+        }
+        .legal-notice {
+            margin-top: 30px;
+            padding: 15px 20px;
+            background-color: rgba(247,248,252,0.82);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 0.85em;
+            color: #6c757d;
+            line-height: 1.5;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        .legal-notice .legal-toggle {
+            cursor: pointer;
+            color: #4caf50;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .legal-notice .legal-content {
+            display: none;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .legal-notice .legal-content a {
+            color: #267a5b;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+        .legal-notice .legal-content a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                justify-content: flex-start;
+                padding: 18px 12px;
+                background-attachment: scroll;
+            }
+            .header {
+                margin: 14px 0 12px;
+            }
+            h1 {
+                font-size: 1.45em;
+            }
+            .login-container {
+                padding: 20px;
+            }
+            input[type="password"] {
+                font-size: 15px;
+            }
+            .btn {
+                font-size: 15px;
+            }
+            .legal-notice {
+                font-size: 0.8em;
+                padding: 12px;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ app_name }} 网页编辑器登录</h1>
+    </div>
+
+    <div class="login-container">
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <input type="password"
+                   name="password"
+                   placeholder="请输入访问密码"
+                   required>
+            <button type="submit" class="btn">立即登录</button>
+        </form>
+    </div>
+
+    <div class="legal-notice">
+        <div class="legal-toggle" id="toggleLegal">显示法律声明</div>
+        <div class="legal-content" id="legalContent">
+            <p>
+                Modified based on the <strong>KouriChat</strong> project.<br>
+                原项目版权: Copyright (C) 2025, umaru<br>
+                修改版本版权: Copyright (C) 2025, iwyxdxl
+            </p>
+            <p>
+                本软件是自由软件，您可以根据 <a href="https://www.gnu.org/licenses/gpl-3.0.zh-cn.html" target="_blank">
+                GNU 通用公共许可证 第3版（或更高版本）</a> 的条款重新发布和修改本软件。
+            </p>
+            <p>
+                本软件按“现状”提供，不提供任何明示或暗示的担保（包括适销性或特定用途适用性）。<br>
+                如您未收到完整的许可证副本，请访问 <a href="https://www.gnu.org/licenses/gpl-3.0.zh-cn.html" target="_blank">
+                GNU GPL 3.0 中文版</a> 获取。
+            </p>
+            <p>
+                源代码获取：<br>
+                原项目源代码：<a href="https://github.com/KouriChat/KouriChat" target="_blank">https://github.com/KouriChat/KouriChat</a>
+            </p>
+            <p>
+                本软件仅供学习和娱乐使用，请勿用于违法用途，否则产生的一切法律责任均与任何作者无关。
+            </p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('toggleLegal').addEventListener('click', function() {
+            var content = document.getElementById('legalContent');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                this.textContent = '隐藏法律声明';
+            } else {
+                content.style.display = 'none';
+                this.textContent = '显示法律声明';
+            }
+        });
+    </script>
+</body>
+</html>

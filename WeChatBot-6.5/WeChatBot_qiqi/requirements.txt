@@ -1,0 +1,17 @@
+flask
+flask-cors
+comtypes
+colorama
+Pillow
+typing-extensions
+pyperclip
+pywin32
+openai==1.84.0
+pyautogui
+werkzeug
+psutil
+filelock
+requests
+tenacity
+beautifulsoup4
+lxml
