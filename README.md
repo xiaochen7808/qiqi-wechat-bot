@@ -2,7 +2,14 @@
 
 QIQI WeChat Bot 是一个运行在 Windows 上的微信自动化聊天机器人项目，用于中文情感聊天、角色扮演、图片识别、联网搜索、主动消息、提醒和记忆管理等场景。
 
-当前仓库作为项目的私有备份与版本管理使用。
+## 当前版本：8.62
+
+- [下载 QIQI 微信 Bot 8.62 Windows 安装版](https://github.com/xiaochen7808/qiqi-wechat-bot/releases/tag/v8.62)
+- 当前 Release 只提供编译后的 EXE，不提供源码下载附件。
+- 消息 API 位于“插件管理”，默认关闭，只有有效的自定义 API（free_api）卡密权益可以启用。
+- 好感度、背景故事和语音自动切换默认关闭。
+
+当前仓库是私有备份与版本管理仓库。仓库中的 `WeChatBot-6.5/WeChatBot_qiqi` 是历史目录名称，保留该名称用于兼容旧路径；它不是当前发布版本号。普通用户请从上面的 8.62 Release 下载并安装。
 
 ## 主要功能
 
@@ -13,6 +20,7 @@ QIQI WeChat Bot 是一个运行在 Windows 上的微信自动化聊天机器人�
 - 主动消息、定时提醒和主动话题
 - 临时记忆、核心记忆、用户资料和人物故事管理
 - 本地 Web 配置后台
+- 通过付费卡密解锁的消息 API
 
 ## 运行环境
 
@@ -35,6 +43,7 @@ QIQI WeChat Bot 是一个运行在 Windows 上的微信自动化聊天机器人�
 
 - [项目说明](WeChatBot-6.5/WeChatBot_qiqi/readme.md)
 - [使用教程](WeChatBot-6.5/WeChatBot_qiqi/QIQI微信Bot使用教程.md)
+- [8.62 更新日志](https://github.com/xiaochen7808/qiqi-wechat-bot/releases/tag/v8.62)
 
 ## 安全提醒
 
